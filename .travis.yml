@@ -2,7 +2,7 @@ language: node_js
 cache: yarn
 script: yarn build
 after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "webpage" && bash
   deploy.sh
 env:
   global:
