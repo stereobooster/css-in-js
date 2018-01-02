@@ -1,4 +1,5 @@
 import React from "react";
+import "./Table.css";
 
 const join = (array, separator) =>
   array.reduce((result, child, index) => {
@@ -9,6 +10,16 @@ const join = (array, separator) =>
     }
   }, []);
 
+const symbol = value => {
+  if (value === true) {
+    return <span className="green symbol">✓</span>;
+  } else if (value === false) {
+    return <span className="red symbol">✕</span>;
+  } else {
+    return <span className="gray symbol">?</span>;
+  }
+};
+
 const CellTd = options => {
   const { header, value } = options;
   if (header === "Package") {
@@ -18,8 +29,10 @@ const CellTd = options => {
       </a>
     ));
     return <td>{join(links, " + ")}</td>;
-  } else {
+  } else if (header === "Version") {
     return <td>{value}</td>;
+  } else {
+    return <td>{symbol(value)}</td>;
   }
 };
 
